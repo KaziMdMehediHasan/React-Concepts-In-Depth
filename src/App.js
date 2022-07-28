@@ -10,17 +10,28 @@ import RenderClickCounter from './components/RenderProps/RenderClickCounter';
 import RenderHoverCounter from './components/RenderProps/RenderHoverCounter';
 import User from './components/RenderProps/User';
 import RenderCounter from './components/RenderProps/RenderCounter';
+import Section from './components/RenderProps/Section';
+import React from 'react';
+import ThemeContext from './contexts/themeContext';
 
-function App() {
-  return (
-    <div className="App">
-      {/* <Clock locale="bn-BD" /> */}
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      theme: "dark"
+    }
+  }
+  render() {
+    const { theme } = this.state;
+    return (
+      <div className="App">
+        {/* <Clock locale="bn-BD" /> */}
 
-      {/* inheritance */}
-      {/* <Text /> */}
+        {/* inheritance */}
+        {/* <Text /> */}
 
-      {/* composition */}
-      {/* <Emoji2>
+        {/* composition */}
+        {/* <Emoji2>
         {
           ({ addEmoji }) => (
             <Bracket>
@@ -32,24 +43,32 @@ function App() {
         }
       </Emoji2> */}
 
-      {/* render props */}
-      <RenderCounter>
-        {
-          ({ counter, increaseCounter }) => <RenderClickCounter counter={counter} increaseCounter={increaseCounter} />
-        }
-      </RenderCounter>
-      <RenderCounter>
+        {/* render props */}
+        <RenderCounter>
+          {
+            ({ counter, increaseCounter }) => <RenderClickCounter counter={counter} increaseCounter={increaseCounter} />
+          }
+        </RenderCounter>
+        {/* <RenderCounter>
         {
           ({ counter, increaseCounter }) => <RenderHoverCounter counter={counter} increaseCounter={increaseCounter} />
         }
-      </RenderCounter>
+      </RenderCounter> */}
+
+        {/* for context api */}
+        <ThemeContext.Provider value={{ theme: theme }}>
+          <Section />
+        </ThemeContext.Provider>
 
 
-      {/* <RenderCounter render={({ counter, increaseCounter }) => <RenderHoverCounter counter={counter} increaseCounter={increaseCounter} />} /> */}
+        {/* <RenderCounter render={({ counter, increaseCounter }) => <RenderHoverCounter counter={counter} increaseCounter={increaseCounter} />} /> */}
 
-      {/* <User render={(isLoggedIn) => isLoggedIn ? "Mehedi" : "Guest"} /> */}
-    </div>
-  );
+        {/* <User render={(isLoggedIn) => isLoggedIn ? "Mehedi" : "Guest"} /> */}
+        {/* render props end */}
+      </div>
+    );
+  }
+
 }
 
 export default App;
