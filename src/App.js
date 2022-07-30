@@ -13,6 +13,7 @@ import RenderCounter from './components/RenderProps/RenderCounter';
 import Section from './components/RenderProps/Section';
 import React from 'react';
 import ThemeContext from './contexts/themeContext';
+import { ReducerCounter } from './components/UserReducer/ReducerCounter';
 
 class App extends React.Component {
   constructor(props) {
@@ -44,11 +45,11 @@ class App extends React.Component {
       </Emoji2> */}
 
         {/* render props */}
-        <RenderCounter>
+        {/* <RenderCounter>
           {
             ({ counter, increaseCounter }) => <RenderClickCounter counter={counter} increaseCounter={increaseCounter} />
           }
-        </RenderCounter>
+        </RenderCounter> */}
         {/* <RenderCounter>
         {
           ({ counter, increaseCounter }) => <RenderHoverCounter counter={counter} increaseCounter={increaseCounter} />
@@ -56,15 +57,19 @@ class App extends React.Component {
       </RenderCounter> */}
 
         {/* for context api */}
-        <ThemeContext.Provider value={{ theme: theme }}>
+        {/* <ThemeContext.Provider value={{ theme: theme }}>
           <Section />
-        </ThemeContext.Provider>
+        </ThemeContext.Provider> */}
 
 
         {/* <RenderCounter render={({ counter, increaseCounter }) => <RenderHoverCounter counter={counter} increaseCounter={increaseCounter} />} /> */}
 
         {/* <User render={(isLoggedIn) => isLoggedIn ? "Mehedi" : "Guest"} /> */}
         {/* render props end */}
+
+        {/* useReducer hook use */}
+        <ReducerCounter />
+        {/* useReducer hook use end */}
       </div>
     );
   }
